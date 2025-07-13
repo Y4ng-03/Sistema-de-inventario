@@ -1,0 +1,62 @@
+/* estilos-boton.css */
+
+/* Estilo básico del botón */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo cuando se pasa el ratón sobre el botón */
+button:hover {
+    background-color: #023c7a;
+    transform: scale(1.05);
+}
+/* Estilos para un botón específico */
+.ingresar {
+    background-color: #bf3fbf;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+.registrar {
+    background-color: #bf3fbf;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+.editBtn {
+    background-color: whitesmoke;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+
+ .añadir{
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+
+.salir{
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 24px;
+    cursor: pointer;
+}
+

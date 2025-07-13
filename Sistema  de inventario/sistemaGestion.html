@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<!metadatos >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inventario</title>
+    <link rel="icon" href="moto.png">
+    <link rel="stylesheet" href="estilos-boton.css">
+    
+    <! estilos >
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #header {
+            background-color: #0b0a0d;
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+
+
+        body {
+            background-color:  #0b0a0d;
+        }
+
+        #divPrincipal {
+            background-color: #0b0a0d;
+            padding: 2.5%;
+            width: 100%;
+            height: 90vh;
+        }
+
+        #subdiv {
+            width: 100%;
+            height: 100%;
+            background-color: #181a1b;
+            border-radius: 10px;
+        }
+
+
+        #divBuscador {
+            width: 100%;
+            padding: 10px;
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #181a1b46;
+            color:whitesmoke;
+            font-weight: bolder 400;
+            font-size: 16px;
+        }
+
+        #tabla {
+            width: 100%;
+            height: 85%;
+            padding: 10px;
+            display: flex;
+            overflow-y: scroll;
+            outline: 2px solid grey;
+            flex-direction: column;
+            
+        }
+
+
+        .tableRowP {
+            width: 100%;
+            height: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #181a1b;
+            color:whitesmoke;
+            text-align: center;
+        }
+
+        .tableRow {
+            width: 100%;
+            height: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: white;
+            border-top: 2px solid whitesmoke;
+            text-align: center;
+        }
+
+        .cell {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #editardiv {
+            width: 50vw;
+            height: 100vh;
+            background-color: grey;
+            border: 2px solid black;
+            position: absolute;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #subdivEditar{
+            display: flex;
+            width: 100%;
+            height: 90%;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            color: white;
+            font-size: 22px;
+        }
+
+        #añadirRepuestoDiv{
+            cursor: pointer;
+            transition: all;
+            transition-duration: .5s;
+        }
+
+        #añadirRepuestoDiv:hover{
+            cursor: pointer;
+            transition: all;
+            transition-duration: .5s;
+            color: rgb(10, 184, 228);
+            transform: scale(1.2);
+        }
+
+
+        .editBtn{
+            cursor: pointer;
+            transition: all;
+            transition-duration: .3s;
+        }
+        .editBtn:hover{
+           transform: scale(1.1);
+        }
+       
+        #añadirDiv{
+            width: 70%;
+            height: 100vh;
+            position: absolute;
+           display: flex;
+           align-items: center;
+           justify-content: flex-end;
+           display: none;
+        }
+
+        #subañadirDiv{
+            width: 50%;
+            height: 100%;
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+    </style>
+</head>
+
+ <! Parte visual de la pagina >
+<body>
+    
+    <! editar >
+    <div id="editardiv">
+        <div id="subdivEditar">
+
+            <div>
+                Nombre del div a editar
+            </div>
+
+            <div>
+                <span>Precio</span>
+                <input type="number" id="input1" placeholder="Precio">
+            </div>
+            <div>
+                <span>Cantidad</span>
+                <input type="number" id="input2"  placeholder="Cantidad">
+            </div>
+            <div>
+                <button id="btn" class="Editar">Editar</button>
+            </div>
+        </div>
+    </div>
+    
+    <! añadir  >
+    <div id="añadirDiv" >
+        <div id="subañadirDiv">
+
+            <div>
+                <span>Nombre del repuesto a añadir</span>
+                <input type="text" id="inputA">
+            </div>
+
+            <div>
+                <span>Tipo de repuesto</span>
+                <select  id="inputB">
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+            </div>
+
+            <div>
+                <span>Categoría</span>
+                <input type="number"  id="inputC">
+            </div>
+
+            <div>
+                <span>Cantidad</span>
+                <input type="number" id="inputD">
+            </div>
+
+
+            <div>
+                <span>Precio</span>
+                <input type="number" id="inputE">
+            </div>
+
+            <div>
+                <button id="btn2" class="añadir">Añadir</button>
+            </div>
+
+            <div>
+                <button id="salirDivAñadir" class="salir">Salír</button>
+            </div>
+
+        </div>
+    </div>
+    
+    
+    <! header >
+    <div id="header">
+        <div style="background-image: url(./moto.png); background-size: cover; background-position: center center; width: 60px; height: 60px;">
+           
+        </div>
+        <div style="font-size: 32px; font-weight: bolder; color: #0a78df rgb(36, 162, 194); text-decoration: underline rgb(247, 247, 247); letter-spacing: 1.5px;">
+           Inventario
+        </div>
+        <div id="añadirRepuestoDiv">
+          Añadir Repuesto
+        </div>
+    </div>
+    
+    <! barra de busqueda>
+    <div id="divPrincipal">
+        <div id="subdiv">
+            <div id="divBuscador">
+                <div>
+                    <span>Nombre del repuesto</span>
+                    <input type="text" placeholder="Nombre del repuesto">
+                </div>
+                <div>
+                    <span>Tipo de repuesto</span>
+                    <select>
+                        <option>Repuesto Tipo A</option>
+                        <option>Repuesto Tipo B</option>
+                        <option>Repuesto Tipo C</option>
+                    </select>
+                </div>
+                <div style="display: flex; align-items: center; flex-direction: column;">
+                    <div>Limpiar filtro</div>
+                    <img src="./reload-outline.svg" alt="" style="width: 10%;">
+                </div>
+                <div>
+                   <div>Buscar</div>
+                    <img src="./search-outline.svg" alt="" style="font-size: 24px; width:10% ;">
+                </div>
+            </div>
+            <div style="width: 100; height: 5vh;">
+
+            </div>
+            <div id="tabla">
+                <div class="tableRowP">
+                    <div class="cell">
+                        Nombre del repuesto
+                    </div>
+                    <div class="cell">
+                        Tipo de repuesto
+                    </div>
+                    <div class="cell">
+                        Caterogía
+                    </div>
+                    <div class="cell">
+                        Cantidad
+                    </div>
+                    <div class="cell">
+                        Precio
+                    </div>
+                    <div class="cell">
+                        Editar
+                    </div>
+                    <div class="cell">
+                        Borrar
+                    </div>
+                </div>
+                <div class="tableRow">
+                    <div class="cell">
+                        Cauchos
+                    </div>
+                    <div class="cell">
+                        Tipo A
+                    </div>
+                    <div class="cell">
+                        Categoría 2
+                    </div>
+                    <div class="cell">
+                        15
+                    </div>
+                    <div class="cell">
+                        52$
+                    </div>
+                    <div class="cell editBtn">
+                        Editar
+                    </div>
+                    <div class="cell borrar">
+                        Borrar
+                    </div>
+                  
+                </div>
+                <div class="tableRow">
+                    <div class="cell">
+                        Frenos
+                    </div>
+                    <div class="cell">
+                        Tipo C
+                    </div>
+                    <div class="cell">
+                        Categoría 3
+                    </div>
+                    <div class="cell">
+                        5
+                    </div>
+                    <div class="cell">
+                        80$
+                    </div>
+                    <div class="cell editBtn">
+                        Editar
+                    </div>
+                    <div class="cell borrarBtn">
+                        Borrar
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    
+    <!javascript >
+
+    <script>
+    
+        var selectedRow
+
+        var audio = new Audio("./sonido1.mp4")
+
+        "funcion de agregar y mostrar la venta de editar"
+        
+        document.addEventListener("click", (e) => {
+
+            if (e.target.classList == "cell editBtn") {
+                console.log(e.target.parentNode)
+                selectedRow = e.target.parentNode
+
+                const editardiv = document.getElementById("editardiv")
+                editardiv.style.display = "flex"
+                let nombreProducto =  selectedRow.children[0].textContent
+
+                let subdivEditar = document.getElementById("subdivEditar")
+
+                subdivEditar.children[0].textContent = "Editando Respuesto: "+nombreProducto
+
+            }
+
+        })
+
+
+        "funcion de comprobar los datos de editar y ocultar"
+        const btn = document.getElementById("btn")
+        btn.addEventListener("click",()=>{
+
+            let input1 = document.getElementById("input1").value
+            let input2 = document.getElementById("input2").value
+
+            if((input1 && input2)!=""){
+               
+                const editardiv = document.getElementById("editardiv")
+                editardiv.style.display = "none"
+
+                
+                selectedRow.children[3].textContent = input1
+                selectedRow.children[4].textContent = input2+"$"
+                audio.play();
+
+                
+            }else{
+                alert("escoge un valor primero")
+            }
+
+        })
+
+        "constante de elemento añadir respuesto "
+        const añadirRepuestoDiv = document.getElementById("añadirRepuestoDiv")
+        
+        "funcion de mostrar añadir nuevo repueto "
+        añadirRepuestoDiv.addEventListener("click",()=>{
+            let añadirDiv = document.getElementById("añadirDiv")
+            añadirDiv.style.display="flex"
+        })
+
+        "funcion de ocultar añadir neuevo repueto "
+        let salirDivAñadir = document.getElementById("salirDivAñadir")
+        salirDivAñadir.addEventListener("click",()=>{
+            let añadirDiv = document.getElementById("añadirDiv")
+            añadirDiv.style.display="none"
+        })
+ 
+        "contante de  boton de añadir los elementos de nuevo repuesto a la tabla de repuestos "
+        const btn2 = document.getElementById("btn2")
+
+        "funcion de añadir los elementos de nuevo repuesto a la tabla de repuestos"
+        btn2.addEventListener("click",()=>{
+
+            let a = document.getElementById("inputA").value
+            let b = document.getElementById("inputB").value
+            let c = document.getElementById("inputC").value
+            let d = document.getElementById("inputD").value
+            let e = document.getElementById("inputE").value
+
+            "logica de modificacion de estilos de la tabla"
+            if((a && b && c && d && e) != ""){
+
+                const div = document.getElementById("añadirDiv")
+                div.style.display = "none"
+
+                let table = document.getElementById("tabla")
+
+                tabla.innerHTML+=`
+                <div class="tableRow">
+                    <div class="cell">
+                       ${a}
+                    </div>
+                    <div class="cell">
+                       Tipo ${b}
+                    </div>
+                    <div class="cell">
+                       Categoría ${c}
+                    </div>
+                    <div class="cell">
+                        ${d}
+                    </div>
+                    <div class="cell">
+                        ${e}$
+                    </div>
+                    <div class="cell editBtn">
+                        Editar
+                    </div>
+                    <div class="cell borrar">
+                        Borrar
+                    </div>
+                  
+                </div>
+                `
+
+                let añadirDiv = document.getElementById("añadirDiv")
+                añadirDiv.style.display = "none"
+
+                audio.play()
+
+
+
+            }else{
+                Alert("Asegúrate de que todos los valores estén correctos")
+            }
+
+        })
+
+        "eliminar un repuesto de la tabla"
+        document.addEventListener("click",(e)=>{
+           if(e.target.classList == "cell borrar"){
+            e.target.parentNode.style.display = "none"
+            audio.play()
+           }
+        })
+
+    </script>
+    
+</body>
+
+</html>

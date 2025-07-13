@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+    <!metadatos >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="moto.png">
+    <link rel="stylesheet" href="estilos-boton.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        #d1 {
+            width: 100%;
+            height: 100vh;
+            background-color:black;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url(moto.png);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            background-image: #ff0eff;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        #d2 {
+            width: 50%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+          
+            background-size: cover;
+            background-position: center center;
+            color: white;
+            font-weight: bolder;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<! parte visual de la pagina >
+<body>
+    <div id="d1">
+        <div id="d2">
+            <div>Bienvenidos a MotoRepuestos L5</div>
+            <div>Ingrese tus datos</div>
+            <div style="display: flex; width: 40%; align-items: center; justify-content: space-between;">
+                <span>Usuario</span>
+                <input type="text" id="i1">
+            </div>
+            <div style="display: flex; width: 50%; align-items: center; justify-content: space-between;">
+                <span>Contraseña</span>
+                <input type="number" name="" id="i2">
+            </div>
+            <button id="btn" class="ingresar">Ingresar</button>
+            <button id="btn" class="registrar">Registrar</button>
+        </div>
+        <div id="fecha-hora"></div>
+    </div>
+
+        <a href="./sistemaGestion.html" id="a"></a>
+
+    </div>
+    
+    <! logica de la aplicacion >
+    <script>
+        
+        "variable"
+        const btn = document.getElementById("btn")
+            
+            
+        "funcion para comparar los datos del usuraios "
+        btn.addEventListener("click", () => {
+            let i1 = document.getElementById("i1").value
+            let i2 = document.getElementById("i2").value
+            let a = document.getElementById("a")
+            
+            " condicion si los datos del usuario son correctos ingresa, sino no puede ingresar "
+            if((i1 && i2) != ""){
+                
+                if(i1 == "jean" && i2 == "123"){
+                    a.click()
+                }else{
+                    alert("Esas credenciales no estan registrados en el sistema")
+                }
+
+            }else{
+                alert("Rellena ambos campos por favor")
+            }
+        })
+        
+</script>
+</body>
+
+</html>
+
